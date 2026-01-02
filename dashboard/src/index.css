@@ -1,0 +1,341 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.nifty {
+  height: 80px;
+  width: 33%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  border-right: 1px solid rgb(225, 224, 224);
+}
+
+.nifty50 {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.nifty50 h6 {
+  font-size: 14px;
+  margin: 7px;
+  color: rgb(39, 36, 36);
+}
+
+.sensex {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.sensex h6 {
+  color: rgb(39, 36, 36);
+  margin: 7px;
+  font-size: 14px;
+}
+
+.my-nav-bar a {
+  text-decoration: none;
+  color: rgb(39, 36, 36);
+}
+
+.dashboard-box {
+  height: 599px;
+  width: 33%;
+  border-right: 1px solid rgb(225, 224, 224);
+}
+
+.search-box {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid rgb(225, 224, 224);
+}
+
+.search {
+  width: 80%;
+  height: 100%;
+}
+
+.search input {
+  border: none;
+  height: 100%;
+  margin-left: 15px;
+}
+
+.search input:focus {
+  border: none;
+  outline: none;
+}
+
+.digit {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.digit p {
+  font-size: 13px;
+  color: rgb(39, 36, 36);
+  margin-top: 17px;
+}
+
+.menu {
+  font-size: 25px;
+  margin-right: 250px;
+  opacity: 0.7;
+  display: none;
+}
+
+.floatingnavbar-container {
+  position: absolute;
+  top: 99px;
+  height: 250px;
+  width: 130px;
+  border-radius: 20px;
+  background-color: rgb(191, 191, 191);
+  border: 1px solid rgb(180, 179, 179);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  z-index: 999;
+}
+
+.floatingnavbar-container div:hover {
+  background-color: rgb(239, 239, 239);
+  border-radius: 20px;
+}
+
+.floatingnavbar-container div a {
+  font-size: 15px;
+}
+
+.cross-button {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.cross-button a {
+  margin-right: 12px;
+}
+
+.main-page {
+  display: flex;
+  flex-direction: row;
+}
+
+.equity-container {
+  height: 100%;
+  width: 70%;
+}
+
+.greeting {
+  font-size: medium;
+  margin-top: 50px;
+  margin-left: 40px;
+  opacity: 0.9;
+}
+
+.line {
+  height: 50px;
+  border-right: 1px solid black;
+  opacity: 0.3;
+}
+
+.order-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+
+}
+
+.order-container p {
+  opacity: 0.7;
+}
+
+.row-items div p {
+  font-size: x-small;
+}
+
+.colorfull {
+  color: green;
+}
+
+#redcolor {
+  color: red;
+}
+
+.dashboard-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.dashboard-items p {
+  font-size: 10px;
+  margin-top: 12px;
+}
+
+.input-div input {
+  width: 48%;
+  height: 40px;
+}
+
+.input-div {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  justify-content: space-evenly;
+}
+
+.buttons-div button {
+  width: 25%;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+}
+
+.buy-button {
+  background-color: rgb(1, 127, 1);
+}
+
+.cancel-button {
+  background-color: rgb(206, 23, 23);
+}
+
+.buttons-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.error-message {
+  color: rgb(167, 25, 25);
+}
+
+.signupbtn {
+  height: 35px;
+  width: 70px;
+  border: none;
+  background-color: rgb(37, 37, 201);
+  border-radius: 5px;
+  color: white;
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+
+  text-align: center;
+  align-items: center;
+}
+
+.signup-row {
+  background-color: #2C0E37;
+  border-radius: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.signup-btn {
+  height: 35px;
+  width: 100px;
+  border: none;
+  background-color: #CB429F;
+  color: white;
+  border-radius: 5px;
+}
+
+.frm div input {
+  border: none;
+  width: 250px;
+  height: 35px;
+  border-radius: 5px;
+}
+
+.frm div {
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.frm button {
+  margin-top: 25px;
+}
+.error{
+  margin-top: 10px;
+  color: rgb(201, 24, 24);
+  font-size: small;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:768px) {
+  .nav-l {
+    display: none;
+  }
+
+  .menu {
+    display: unset;
+  }
+
+  .nifty {
+    width: 45%;
+  }
+
+  .menu {
+    margin-right: 0;
+  }
+
+  .nav-bar-logo {
+    margin-right: 160px;
+  }
+
+  .dashboard-box {
+    width: 45%;
+  }
+}
+
+
+@media (max-width:380px) {
+  .search-box {
+    height: 70px;
+  }
+}
