@@ -1,0 +1,178 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.nav-link {
+  margin-left: 15px;
+}
+
+.bottom a {
+  text-decoration: none;
+  color: rgb(103, 101, 101);
+}
+
+.bottom a:hover {
+  color: rgb(46, 46, 193);
+}
+
+.social-media a {
+  text-decoration: none;
+  font-size: 20px;
+  color: rgb(103, 101, 101);
+}
+
+.social-media a:hover {
+
+  color: rgb(46, 46, 193);
+}
+
+.footer-main-container {
+
+  padding-top: 30px;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-bottom: 20px;
+
+}
+
+.color-div {
+  background-color: #fbfbfb;
+  border-top: 1px solid rgb(231, 226, 226);
+}
+
+.nav-item .nav-link:hover {
+  color: rgb(46, 46, 193);
+}
+
+.footer-link {
+  font-size: 15px;
+
+  margin-bottom: 10px;
+}
+
+.bottom {
+  margin-bottom: 150px;
+}
+
+.email {
+  text-decoration: none;
+}
+
+.footer-para {
+  color: rgb(103, 101, 101);
+  font-size: 11px;
+}
+
+.ltd {
+  color: rgb(103, 101, 101);
+}
+
+.footer-last-link-tag {
+  text-decoration: none;
+  font-size: 11px;
+  color: rgb(103, 101, 101);
+}
+
+.footer-last-link-tag:hover {
+  color: blue;
+}
+
+.footer-last-box {
+  display: flex;
+  justify-content: center;
+}
+
+.container-fluid {
+  background-color: rgb(248, 248, 248);
+  border-bottom: 1px solid rgb(209, 200, 200);
+  position: fixed;
+  top: 0;
+}
+
+.not-found {
+  padding-top: 300px;
+  padding-bottom: 300px;
+
+}
+
+.not-found-link {
+  font-size: large;
+  text-decoration: none;
+}
+
+.about-container {
+  margin-top: 50px;
+  padding: 100px;
+  margin-bottom: 100px;
+  border-bottom: 1px solid rgb(215, 211, 211);
+}
+
+.para {
+  margin-bottom: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.my-dp-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dp-circle {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 255, 0.437);
+}
+
+.dp-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.name{
+  margin-top: 50px;
+}
+.intero-link{
+  text-decoration: none;
+}
+ .console{
+   margin-top: 150px;
+}  
+.zero-image{
+  height: 150px;
+}
+.eq-button{
+  color: rgb(43, 43, 162);
+  font-size: larger;
+}
+.bottom-color{
+  border-bottom: 2px solid rgb(43, 43, 162);
+}
+.bottom-color button{
+  color: black;
+}
+.equity-table{
+  margin-bottom: 100px;
+  font-size: 12px;
+}
+.charge-list{
+  font-size: 13px;
+}
+.support-link{
+  text-decoration: none;
+}
