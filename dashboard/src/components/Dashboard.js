@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function Dashboard() {
     const navigate = useNavigate();
     let [visible, setVisible] = useState(null);
-    let [login, setLogin] = useState();
+    let [login, setLogin] = useState(false);
 
     function mouseEnter(i) {
         setVisible(i);
@@ -59,10 +59,10 @@ function Dashboard() {
                             <div className="dashboard-items" onMouseEnter={() => { mouseEnter(index) }} onMouseLeave={() => { mouseLeave(null) }}>
                                 <p className="m-2" style={{ color: stock.isDown ? 'red' : 'green' }}>{stock.name}</p>
                                 {visible === index && (
-                                    !login ?
+                                    login ?
                                         <>
                                             <p><button style={{ backgroundColor: 'green', border: 'none', fontSize: '15px', borderRadius: '5px' }} onClick={() => { setBuySell(index) }}>Buy</button></p>
-                                            <p><button style={{ backgroundColor: 'red', border: 'none', fontSize: '15px', borderRadius: '5px' }}>Sell</button></p>
+                                            
 
                                         </>
                                         :

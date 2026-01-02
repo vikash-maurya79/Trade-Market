@@ -31,12 +31,10 @@ function LoginPage() {
             }
         ).then((res) => {
             navigate('/dashboard')
-            console.log(res.status);
             if (res.status === 200) {
                 setMail('');
                 setPassword('');
             }
-
         }).catch((err) => {
             setError(err.response.data.message);
         })
