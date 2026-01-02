@@ -1,13 +1,15 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function BuySell({ setBuySell, id, name }) {
     let [Amount, setAmount] = useState();
     let [Quantity, setQuantity] = useState();
     let [Error, setError] = useState('');
 
+    let navigate = useNavigate();
+
     async function buyRequest(e) {
-        setBuySell(null);
         if (Amount > 0 && Quantity > 0) {
             await axios.post("http://localhost:3001/buy",
                 {
@@ -19,14 +21,19 @@ function BuySell({ setBuySell, id, name }) {
                 },
                 {
                     withCredentials: true
-                });
-            setAmount(0);
-            setQuantity(0);
-            console.log("Post request sent successfully");
+                }).then((res) => {
+                    setAmount(0);
+                    setQuantity(0);
+                    setBuySell(null);
+                }).catch((err) => {
+                    if (err.response.status === 401) {
+                        setError(err.response.data.message);
+                        navigate('/login');
+                    }
+                })
+
         }
-        else {
-            setError('Somthing is missing !');
-        }
+
     }
 
     function amountHandler(e) {

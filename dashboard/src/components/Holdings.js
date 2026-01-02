@@ -7,13 +7,15 @@ function HoldingsPage() {
     let [allHoldings, setHoldings] = useState([]);
     const navigate = useNavigate();
 
-     useEffect(() => {
+    let totalinvestment = 0;
+    let currentValue = 0;
+
+    useEffect(() => {
         async function runner() {
             await axios.get("http://localhost:3001/holdings", {
                 withCredentials: true
             }).then((res) => {
                 setHoldings(res.data);
-                console.log(res.data);
             }).catch((err) => {
                 if (err.response.status === 401) {
                     navigate('/login');
@@ -34,7 +36,7 @@ function HoldingsPage() {
                         <p>Stock name</p>
                     </div>
                     <div className="col mt-3">
-                        <p>Instrument</p>
+                        <p>Investment</p>
                     </div>
                     <div className="col mt-3">
                         <p>Qty.</p>
@@ -61,6 +63,8 @@ function HoldingsPage() {
 
                 {allHoldings.map((stock, index) => {
                     const currVal = stock.price * stock.qty;
+                    totalinvestment += stock.price;
+                    currentValue += currVal;
                     const dayClass = stock.isLoss ? "loss" : "profit";
                     return <div className="row border text-center  row-items">
                         <div className="col mt-3">
@@ -103,11 +107,11 @@ function HoldingsPage() {
 
                 <div className="row mt-5 pt-5 text-center">
                     <div className="col">
-                        <h5>29,875.</h5>
+                        <h5>{totalinvestment}</h5>
                         <p style={{ fontSize: '12px' }}>55</p>
                     </div>
                     <div className="col">
-                        <h5>31,428.</h5>
+                        <h5>{currentValue}</h5>
                         <p style={{ fontSize: '12px' }}>95</p>
                     </div>
                     <div className="col">

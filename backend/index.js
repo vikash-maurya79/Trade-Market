@@ -75,12 +75,16 @@ app.get("/watchlist", async (req, res) => {
     res.json(watchlistData);
 })
 app.post("/buy", authMiddleware, async (req, res) => {
-    if (!req.body.name ||
-        !req.body.quantity ||
+    if (!req.body.quantity ||
         !req.body.amount ||
         !req.body.mode) {
-        res.status(400).json({
+        return res.status(400).json({
             message: 'fill required fields carefully'
+        })
+    }
+    if (!req.body.name) {
+        return res.status(401).json({
+            message: 'Login is required'
         })
     }
     let tempOrder = new order({

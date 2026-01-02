@@ -237,7 +237,8 @@ code {
 }
 
 .error-message {
-  color: rgb(167, 25, 25);
+  color: red;
+  font-size: smaller;
 }
 
 .signupbtn {
@@ -288,11 +289,13 @@ code {
 .frm button {
   margin-top: 25px;
 }
-.error{
+
+.error {
   margin-top: 10px;
   color: rgb(201, 24, 24);
   font-size: small;
 }
+
 
 
 

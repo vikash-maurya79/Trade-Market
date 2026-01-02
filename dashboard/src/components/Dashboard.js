@@ -23,7 +23,6 @@ function Dashboard() {
             await axios.get("http://localhost:3001/watchlist", {
                 withCredentials: true
             }).then((res) => {
-                console.log(res.data);
                 setAllWatchlist(res.data);
             }
 
