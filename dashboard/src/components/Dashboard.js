@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import BuySell from "./BuySell";
 import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
 function Dashboard() {
     const navigate = useNavigate();
     let [visible, setVisible] = useState(null);
@@ -60,8 +61,8 @@ function Dashboard() {
                                 {visible === index && (
                                     login ?
                                         <>
-                                            <p><button style={{ backgroundColor: 'green', border: 'none', fontSize: '15px', borderRadius: '5px' }} onClick={() => { setBuySell(index) }}>Buy</button></p>
-                                            
+                                            <p><Button variant="outlined" color="success" onClick={() => { setBuySell(index) }}>Buy</Button></p>
+
 
                                         </>
                                         :

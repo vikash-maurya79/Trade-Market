@@ -2,9 +2,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Button from '@mui/material/Button';
+import Sell from "./Sell";
 function HoldingsPage() {
 
     let [allHoldings, setHoldings] = useState([]);
+    let [stock, setStock] = useState(null);
     const navigate = useNavigate();
 
     let totalinvestment = 0;
@@ -25,10 +28,23 @@ function HoldingsPage() {
         runner();
 
     }, [])
+    async function sellHandler(stock) {
+        setStock(stock);
+    }
+
     return (
         <div className="equity-container">                {/* do not change the class name of this div */}
             <div className="container">
-                <h5 className="m-5">Holdings ({allHoldings.length})</h5>
+                <div className="row">
+                    <div className="col">
+                        <h5 className="m-5">Holdings ({allHoldings.length})</h5>
+                    </div>
+                    <div className="col">
+                        {stock ? <Sell stock={stock} /> : ''}
+
+
+                    </div>
+                </div>
             </div>
             <div className="container">
                 <div className="row border text-center  row-items">
@@ -58,6 +74,9 @@ function HoldingsPage() {
                     </div>
                     <div className="col mt-3">
                         <p>Day chg.</p>
+                    </div>
+                    <div className="col mt-3">
+                        <p></p>
                     </div>
                 </div>
 
@@ -94,6 +113,9 @@ function HoldingsPage() {
                         </div>
                         <div className="col mt-3">
                             <p style={{ color: stock.day[0] === '+' ? 'green' : 'red' }}>{stock.day}</p>
+                        </div>
+                        <div className="col mt-3">
+                            <p><Button variant="outlined" color="error" onClick={() => { sellHandler(stock) }}>Sell</Button></p>
                         </div>
                     </div>
                 })}
