@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button";
 
-function Sell({ stock }) {
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
+
+function Sell({ stock, setStock }) {
+    const navigate = useNavigate();
 
     let [error, setError] = useState();
     let [quantity, setQuantity] = useState();
@@ -20,12 +22,25 @@ function Sell({ stock }) {
         }
     }
     async function sellHandler() {
-        if (quantity > stock.qty) {
+        if (quantity > Number(stock.qty)) {
             setError('Order canceled !');
             console.log('in case of greater route hitten');
         }
         else {
+
             setError('');
+            await axios.post('http://localhost:3001/sell', {
+                stockQty: stock.qty,
+                stockId: stock._id
+            }, {
+                withCredentials: true
+            }).then((res) => {
+                setStock(null);
+            }).catch((err) => {
+                if (err.response.status === 401) {
+                    navigate('/login');
+                }
+            })
             console.log('selling route hitten');
         }
     }
@@ -35,14 +50,14 @@ function Sell({ stock }) {
             <form onSubmit={(e) => { e.preventDefault() }}>
                 <div className="row input-div">
 
-                    <input type="Number" placeholder="Quantity.." max={stock.qty} onChange={(e) => { qunatityHandler(e) }}></input>
+                    <input type="number" placeholder="Quantity.." max={stock.qty} onChange={(e) => { qunatityHandler(e) }}></input>
                 </div>
                 <div className="row text-center">
                     <p className="error-message">{error}</p>
                 </div>
                 <div className="row buttons-div">
                     <Button variant="contained" color="success" onClick={sellHandler}>Sell</Button>
-                    <Button variant="contained" color="error">Cancel</Button>
+                    <Button variant="contained" color="error" onClick={() => { setStock(null) }}>Cancel</Button>
                 </div>
             </form>
         </div>

@@ -40,7 +40,7 @@ function HoldingsPage() {
                         <h5 className="m-5">Holdings ({allHoldings.length})</h5>
                     </div>
                     <div className="col">
-                        {stock ? <Sell stock={stock} /> : ''}
+                        {stock ? <Sell stock={stock} setStock={setStock} /> : ''}
 
 
                     </div>
