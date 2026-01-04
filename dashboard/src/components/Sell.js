@@ -16,13 +16,13 @@ function Sell({ stock, setStock }) {
         }
         if (e.target.value <= stock.qty) {
             setError('');
+
         }
-        else {
-            setQuantity(e.target.value);
-        }
+        setQuantity(e.target.value);
+
     }
     async function sellHandler() {
-        if (quantity > Number(stock.qty)) {
+        if (quantity > stock.qty) {
             setError('Order canceled !');
             console.log('in case of greater route hitten');
         }
@@ -30,7 +30,7 @@ function Sell({ stock, setStock }) {
 
             setError('');
             await axios.post('http://localhost:3001/sell', {
-                stockQty: stock.qty,
+                stockQty: quantity,
                 stockId: stock._id
             }, {
                 withCredentials: true
@@ -39,6 +39,9 @@ function Sell({ stock, setStock }) {
             }).catch((err) => {
                 if (err.response.status === 401) {
                     navigate('/login');
+                }
+                if (err.response.status === 500) {
+                    setError('Retry');
                 }
             })
             console.log('selling route hitten');

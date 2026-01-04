@@ -60,7 +60,7 @@ app.post('/sell', authMiddleware, async (req, res) => {
             });
         }
 
-        const availableQty = Number(foundedHolding.qty);
+        const availableQty = foundedHolding.qty;
         const sellQty = req.body.stockQty;
 
         if (!sellQty || sellQty <= 0) {
@@ -74,20 +74,16 @@ app.post('/sell', authMiddleware, async (req, res) => {
                 message: 'Somthing went wrong'
             });
         }
-
         const remainingQty = availableQty - sellQty;
-
-        // 🔥 CASE 1: sell all → delete holding
-        if (remainingQty == 0) {
+        if (remainingQty === 0) {
+            console.log('running first step');
             await foundedHolding.deleteOne();
 
             return res.status(200).json({
                 message: 'Order successfull'
             });
         }
-
-        // 🔥 CASE 2: partial sell → update holding
-        foundedHolding.qty = String(remainingQty); // keep string (as per your schema)
+        foundedHolding.qty = remainingQty;
         await foundedHolding.save();
 
         return res.status(200).json({
