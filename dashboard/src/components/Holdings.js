@@ -12,6 +12,7 @@ function HoldingsPage() {
 
     let totalinvestment = 0;
     let currentValue = 0;
+    let totalProfit = 0;
 
     useEffect(() => {
         async function runner() {
@@ -84,6 +85,7 @@ function HoldingsPage() {
                     const currVal = stock.price * stock.qty;
                     totalinvestment += stock.price;
                     currentValue += currVal;
+                    totalProfit += currVal - stock.price;
                     const dayClass = stock.isLoss ? "loss" : "profit";
                     return <div className="row border text-center  row-items">
                         <div className="col mt-3">
@@ -137,7 +139,7 @@ function HoldingsPage() {
                         <p style={{ fontSize: '12px' }}>95</p>
                     </div>
                     <div className="col">
-                        <h5 style={{ color: 'green' }}>1,553.40 (+5.20%)</h5>
+                        <h5 style={{ color: 'green' }}>{totalProfit} (+5.20%)</h5>
                     </div>
 
                 </div>

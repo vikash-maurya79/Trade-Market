@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import BuySell from "./BuySell";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+
 function Dashboard() {
     const navigate = useNavigate();
     let [visible, setVisible] = useState(null);
@@ -42,6 +44,7 @@ function Dashboard() {
         }
         runner();
     }, [])
+   
     return (
         <>
             <div className="dashboard-box">
@@ -71,6 +74,8 @@ function Dashboard() {
                                 <p>{stock.price}</p>
                                 <p style={{ color: stock.percent[0] === '-' ? 'red' : 'green' }} id={index}>{stock.percent}</p>
                                 <p style={{ color: stock.percent[0] === '-' ? 'red' : 'green' }} id={index}>{stock.percent[0] === '-' ? <i class="fa-solid fa-arrow-down"></i> : <i class="fa-solid fa-arrow-up"></i>}</p>
+                                {login ? <p><Button onClick={()=>{navigate(`/view-stock/${stock._id}`)}}><RemoveRedEyeIcon /></Button></p> : <></>}
+
                             </div>
                         </div>
                         {buySell === index && (

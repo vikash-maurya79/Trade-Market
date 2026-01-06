@@ -295,6 +295,11 @@ code {
   color: rgb(201, 24, 24);
   font-size: small;
 }
+.graph-container{
+  margin-left: 20px;
+  height: 100%;
+  width: 100%;
+}
 
 
 

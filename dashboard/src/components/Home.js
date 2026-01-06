@@ -8,6 +8,7 @@ import NotFound from "./NotFound.js";
 import OrdersPage from "./Orders.js";
 import SignupPage from "./SignupPage.js";
 import LoginPage from "./LoginPage.js";
+import StockPage from "./StockPage.js";
 
 
 function Home() {
@@ -24,6 +25,7 @@ function Home() {
           <Route path="/dashboard" element={<DashboardDataPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/view-stock/:id" element={<StockPage />} />
 
           <Route path='*' element={<NotFound />} />
 
