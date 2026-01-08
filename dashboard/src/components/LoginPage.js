@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import { useAuth } from "./AuthContext";
-
 function LoginPage() {
 
     const navigate = useNavigate();
@@ -36,15 +35,13 @@ function LoginPage() {
                 setMail('');
                 setPassword('');
                 setIsLoggedIn(true);
-                navigate('/dashboard')
+                navigate('/dashboard');
             }
         }).catch((err) => {
             setError(err.response.data.message);
         })
-
     }
     return (
-
         <>
             <div className="container signup-container" style={{ height: '100%', width: '100%' }}>
                 <div className="row signup-row" style={{ height: '500px', width: '700px', marginTop: '50px' }}>

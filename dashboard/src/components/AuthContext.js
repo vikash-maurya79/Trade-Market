@@ -22,7 +22,9 @@ export const UserContextProvider = ({ children }) => {
         } catch (error) {
             setIsLoggedIn(false);
         }
-        setLoading(false);
+        finally {
+            setLoading(false);
+        }
 
     }
     useEffect(() => {

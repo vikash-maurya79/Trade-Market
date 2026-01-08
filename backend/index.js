@@ -295,7 +295,6 @@ app.post('/logout', (req, res) => {
         sameSite: 'lax',
         maxAge: '0'
     })
-    console.log('Logout successfull');
     res.status(200).json({
         message: 'Logout successfully'
     })

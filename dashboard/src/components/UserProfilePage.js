@@ -1,18 +1,28 @@
 import axios from "axios";
 import Button from '@mui/material/Button'
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
+import { useStock } from "./Context/StockContext";
+import { useNavigate } from "react-router-dom";
 function UserProfilePage() {
-    const navigate = useNavigate();
     const { setIsLoggedIn } = useAuth();
+    const { setHoldings } = useStock();
+    const navigate = useNavigate();
 
     async function sendLogoutRequest() {
-        await axios.post('http://localhost:3001/logout',
-            {}, {
-            withCredentials: true
-        })
+        try {
+            await axios.post('http://localhost:3001/logout',
+                {}, {
+                withCredentials: true
+            })
+        }
+
+        catch (error) {
+            console.log('error');
+        } finally {
+            navigate('/login');
+        }
         setIsLoggedIn(false);
-        navigate('/login');
+        setHoldings(null);
 
     }
     return (

@@ -1,6 +1,5 @@
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
 import Sell from "./Sell";
 import { useStock } from "./Context/StockContext";
@@ -14,6 +13,13 @@ function HoldingsPage() {
 
     async function sellHandler(stock) {
         setStock(stock);
+    }
+    if (allHoldings === null) {
+        return (
+            <>
+                <h6>Nothing found</h6>
+            </>
+        )
     }
 
     return (
@@ -104,14 +110,6 @@ function HoldingsPage() {
                         </div>
                     </div>
                 })}
-
-
-
-
-
-
-
-
                 <div className="row mt-5 pt-5 text-center">
                     <div className="col">
                         <h5>{totalinvestment}</h5>
@@ -126,10 +124,6 @@ function HoldingsPage() {
                     </div>
 
                 </div>
-
-
-
-
                 <div className="row text-center mt-4">
                     <div className="col">
                         <p style={{ fontSize: '11px' }}>Total investment</p>

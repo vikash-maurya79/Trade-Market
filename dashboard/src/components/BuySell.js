@@ -1,13 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 function BuySell({ setBuySell, id, name }) {
     let [Amount, setAmount] = useState();
     let [Quantity, setQuantity] = useState();
     let [Error, setError] = useState('');
 
-    let navigate = useNavigate();
 
     async function buyRequest(e) {
         if (Amount > 0 && Quantity > 0) {
@@ -28,7 +26,7 @@ function BuySell({ setBuySell, id, name }) {
                 }).catch((err) => {
                     if (err.response.status === 401) {
                         setError(err.response.data.message);
-                        navigate('/login');
+                        
                     }
                 })
 

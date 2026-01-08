@@ -32,7 +32,7 @@ function Dashboard() {
 
             ).catch((err) => {
                 if (err.response.status === 401) {
-                    navigate('/login');
+                    console.log('somthing went wrong');
                 }
             })
         }

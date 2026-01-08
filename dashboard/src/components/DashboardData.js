@@ -1,38 +1,34 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useStock } from "./Context/StockContext";
+import CircularProgress from '@mui/material/CircularProgress';
 
 function DashboardDataPage() {
 
-    let [dataFound, setDataFound] = useState([]);
+    const { allHoldings } = useStock();
     let [user, setUser] = useState();
-    const navigate = useNavigate();
-
     useEffect(() => {
         async function runner() {
-            await axios.get('http://localhost:3001/holdings', {
-                withCredentials: true
-            }).then((res) => {
-                console.log('data coming on frontend on dashboard page is ', res.data);
-                setDataFound(res.data);
-            }).catch((err) => {
-                navigate('/login');
-            })
-
             await axios.get('http://localhost:3001/user',
                 { withCredentials: true }
 
             ).then((res) => {
                 console.log('User founded for is...', res.data.user[0].username);
                 setUser(res.data.user[0].username);
-            }).catch((err) => {
-                navigate('/login');
             })
         }
         runner();
     }, [])
-    let i = dataFound.length;
+    if (allHoldings == null) {
+        return (
+            <div className="container text-center" style={{ height: '100%', }}>
+                <CircularProgress color="secondary" />
+            </div>
+        )
+    }
+    let i = allHoldings.length;
+
 
     return (
         <div className="equity-container">
