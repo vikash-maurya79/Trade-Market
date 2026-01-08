@@ -1,34 +1,17 @@
 
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
 import Sell from "./Sell";
+import { useStock } from "./Context/StockContext";
 function HoldingsPage() {
 
-    let [allHoldings, setHoldings] = useState([]);
+    const { allHoldings } = useStock();
     let [stock, setStock] = useState(null);
-    const navigate = useNavigate();
-
     let totalinvestment = 0;
     let currentValue = 0;
     let totalProfit = 0;
 
-    useEffect(() => {
-        async function runner() {
-            await axios.get("http://localhost:3001/holdings", {
-                withCredentials: true
-            }).then((res) => {
-                setHoldings(res.data);
-            }).catch((err) => {
-                if (err.response.status === 401) {
-                    navigate('/login');
-                }
-            })
-        }
-        runner();
-
-    }, [])
     async function sellHandler(stock) {
         setStock(stock);
     }

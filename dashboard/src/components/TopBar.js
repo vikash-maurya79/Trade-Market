@@ -1,38 +1,18 @@
 import FloatingNavbar from "./FloatingNavbar";
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button'
-import axios from "axios";
+import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import Avatar from '@mui/material/Avatar';
+import { deepOrange, deepPurple } from '@mui/material/colors';
+import { useAuth } from "./AuthContext";
 
 function TopBar() {
     let [check, setCheck] = useState(false);
-    let [login, setLogin] = useState();
+
     const navigate = useNavigate();
-    async function sendLogoutRequest() {
-        await axios.post('http://localhost:3001/logout',
-            {}, {
-            withCredentials: true
-        })
-        navigate('/login');
-        setLogin(null);
 
-    }
-
-    useEffect(() => {
-        async function runner() {
-            await axios.get('http://localhost:3001/check_login',
-                { withCredentials: true }).then((res) => {
-                    setLogin(res.data.isLoggedIn);
-                }).catch((err) => {
-                    if (err.response.status === 401) {
-                        runner();
-                    }
-                })
-        }
-        runner();
-    }, [])
-
+    const { isLoggedIn } = useAuth();
 
     return (
         <div>
@@ -66,8 +46,11 @@ function TopBar() {
                 <Link style={{ fontSize: '12px', marginLeft: '-20px' }} to='/apps' className="nav-l">Apps </Link>
 
 
-                {login ?
-                    <Button className="signup-btn" onClick={sendLogoutRequest} variant="outlined" style={{ marginRight: '10px' }}>Logout</Button>
+                {isLoggedIn ?
+                    <>
+
+                        <Button onClick={() => { navigate('/profile') }}> <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar></Button>
+                    </>
                     :
                     <>
                         <Link style={{ fontSize: '12px', marginLeft: '-20px', marginRight: '30px' }} to='/signup' className="nav-l"><Button className="signupbtn">Signup</Button></Link>

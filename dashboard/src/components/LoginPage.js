@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "@mui/material/Button";
+import { useAuth } from "./AuthContext";
 
 function LoginPage() {
 
@@ -11,6 +12,7 @@ function LoginPage() {
     let [mail, setMail] = useState();
     let [pass, setPassword] = useState();
     let [error, setError] = useState();
+    const { setIsLoggedIn } = useAuth();
 
 
 
@@ -30,10 +32,11 @@ function LoginPage() {
                 withCredentials: true
             }
         ).then((res) => {
-            navigate('/dashboard')
             if (res.status === 200) {
                 setMail('');
                 setPassword('');
+                setIsLoggedIn(true);
+                navigate('/dashboard')
             }
         }).catch((err) => {
             setError(err.response.data.message);
