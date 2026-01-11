@@ -1,8 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
-
 const authContext = createContext();
-export const UserContextProvider = ({ children }) => {
+export const AuthContextProvider = ({ children }) => {
     let [loading, setLoading] = useState(true);
     let [isLoggedIn, setIsLoggedIn] = useState(false);
 

@@ -1,7 +1,7 @@
 import TopBar from "./TopBar";
 import Dashboard from "./Dashboard.js";
 import DashboardDataPage from "./DashboardData.js";
-import { Route, Routes,Navigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import HoldingsPage from "./Holdings.js";
 import PositionsPage from "./Positions.js";
 import NotFound from "./NotFound.js";
@@ -11,36 +11,43 @@ import LoginPage from "./LoginPage.js";
 import StockPage from "./StockPage.js";
 import UserProfilePage from "./UserProfilePage.js";
 import { ProtectRoute } from "./Protect/Protect.js";
-import { useAuth } from "./AuthContext.js";
+import { AuthContextProvider } from "./AuthContext.js";
+import { StockContextProvider } from "./Context/StockContext.js";
+import { UserContextProvider } from "./Context/UserContext.js";
+
 function Home() {
-  const { isLoggedIn } = useAuth();
+
   return (
     <>
+      <AuthContextProvider>
+        <StockContextProvider>
+          <UserContextProvider>
+            <TopBar />
+            <div className="main-page">
+              <Dashboard />
 
-      <TopBar />
-      <div className="main-page">
-        <Dashboard />
-        <Routes>
-          {!isLoggedIn ?
-            <>
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/signup" element={<SignupPage />} />
-            </> : ''}
+              <Routes>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
 
-          <Route element={<ProtectRoute />}>
-            <Route path="/" element={<DashboardDataPage />} />
-            <Route path="/holdings" element={<HoldingsPage />} />
-            <Route path="/positions" element={<PositionsPage />} />
-            <Route path="/orders" element={<OrdersPage />} />
-            <Route path="/dashboard" element={<DashboardDataPage />} />
-            <Route path="/view-stock/:id" element={<StockPage />} />
-            <Route path="/profile" element={<UserProfilePage />} />
-            <Route path="/login" element={<Navigate to="/"/>} />
-            <Route path="/signup" element={<Navigate to="/"/>} />
-          </Route>
-          <Route path='*' element={<NotFound />} />
-        </Routes>
-      </div >
+                <Route element={<ProtectRoute />}>
+                  <Route path="/" element={<DashboardDataPage />} />
+                  <Route path="/holdings" element={<HoldingsPage />} />
+                  <Route path="/positions" element={<PositionsPage />} />
+                  <Route path="/orders" element={<OrdersPage />} />
+                  <Route path="/dashboard" element={<DashboardDataPage />} />
+                  <Route path="/view-stock/:id" element={<StockPage />} />
+                  <Route path="/profile" element={<UserProfilePage />} />
+                  <Route path="/login" element={<Navigate to="/" />} />
+                  <Route path="/signup" element={<Navigate to="/" />} />
+                </Route>
+                <Route path='*' element={<NotFound />} />
+              </Routes>
+
+            </div >
+          </UserContextProvider>
+        </StockContextProvider>
+      </AuthContextProvider>
 
     </>
   );

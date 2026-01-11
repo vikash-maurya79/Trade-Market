@@ -1,19 +1,18 @@
 import FloatingNavbar from "./FloatingNavbar";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from '@mui/material/Button'
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
-import { deepOrange, deepPurple } from '@mui/material/colors';
+import { deepPurple } from '@mui/material/colors';
 import { useAuth } from "./AuthContext";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function TopBar() {
     let [check, setCheck] = useState(false);
-
     const navigate = useNavigate();
 
     const { isLoggedIn } = useAuth();
-
     return (
         <div>
 
@@ -48,8 +47,7 @@ function TopBar() {
 
                 {isLoggedIn ?
                     <>
-
-                        <Button onClick={() => { navigate('/profile') }}> <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar></Button>
+                        <Button onClick={() => { navigate('/profile') }} style={{ borderRadius: '40%', marginRight: '20px' }}> <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar></Button>
                     </>
                     :
                     <>
@@ -57,12 +55,7 @@ function TopBar() {
                         <Link style={{ fontSize: '12px', marginLeft: '-20px', marginRight: '30px' }} to='/login' className="nav-l"><Button variant="contained" className="signupbtn">Login</Button></Link>
                     </>
                 }
-
-
-
-
             </nav>
-
         </div>
 
     );

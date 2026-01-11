@@ -31,7 +31,10 @@ function StockPage() {
 
     if (!stock) {
         return (
-            <CircularProgress enableTrackSlot size="3rem" />
+            <div className="container text-center" style={{ height: '100%', }}>
+                <h5 style={{ marginTop: '250px' }}>  <CircularProgress enableTrackSlot size="3rem" /> </h5>
+            </div>
+
         )
     }
 

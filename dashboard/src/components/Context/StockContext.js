@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const stockContext = createContext();
 
 export const StockContextProvider = ({ children }) => {
-    const { isLoggedIn, setIsLoggedIn } = useAuth();
+    const { isLoggedIn } = useAuth();
     let [quantity, setQuantity] = useState();
     let [allHoldings, setHoldings] = useState([]);
     let [error, setError] = useState();
