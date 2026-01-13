@@ -9,7 +9,7 @@ function BuySell({ setBuySell, id, name }) {
 
     async function buyRequest(e) {
         if (Amount > 0 && Quantity > 0) {
-            await axios.post("http://localhost:3001/buy",
+            await axios.post("http://localhost:3001/stock/buy/api",
                 {
                     amount: Amount,
                     quantity: Quantity,

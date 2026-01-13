@@ -7,7 +7,7 @@ export const AuthContextProvider = ({ children }) => {
 
     async function runner() {
         try {
-            let flag = await axios.get('http://localhost:3001/check_login',
+            let flag = await axios.get('http://localhost:3001/check-user/login/api',
 
                 {
                     withCredentials: true

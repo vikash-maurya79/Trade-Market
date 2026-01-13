@@ -7,7 +7,7 @@ export const UserContextProvider = ({ children }) => {
     let [user, setUser] = useState(null);
 
     async function runner() {
-        let User = await axios.get('http://localhost:3001/user',
+        let User = await axios.get('http://localhost:3001/check-user/user/api',
             {
                 withCredentials: true
             }

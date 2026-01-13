@@ -18,7 +18,7 @@ export const StockContextProvider = ({ children }) => {
 
 
     async function fetchHoldings() {
-        let res = await axios.get("http://localhost:3001/holdings", {
+        let res = await axios.get("http://localhost:3001/data/holdings/api", {
             withCredentials: true
         });
         if (res.data) {
@@ -33,7 +33,7 @@ export const StockContextProvider = ({ children }) => {
         else {
 
             setError('');
-            await axios.post('http://localhost:3001/sell', {
+            await axios.post('http://localhost:3001/stock/sell/api', {
                 stockQty: quantity,
                 stockId: stock._id
             }, {

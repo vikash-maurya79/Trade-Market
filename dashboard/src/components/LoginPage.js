@@ -23,7 +23,7 @@ function LoginPage() {
     }
     async function sendRequest() {
 
-        await axios.post('http://localhost:3001/login', {
+        await axios.post('http://localhost:3001/user/loginuser/api', {
             email: mail,
             password: pass
         }

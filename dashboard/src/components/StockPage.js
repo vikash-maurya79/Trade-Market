@@ -12,7 +12,7 @@ function StockPage() {
     useEffect(() => {
         async function runner() {
             try {
-                let res = await axios.get(`http://localhost:3001/stock/${id}`
+                let res = await axios.get(`http://localhost:3001/view-stock/stock/${id}/api`
                     , { withCredentials: true }
                 );
 

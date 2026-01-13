@@ -24,7 +24,7 @@ function SignupPage() {
 
     async function sendRequest() {
 
-        await axios.post('http://localhost:3001/signup', {
+        await axios.post('http://localhost:3001/user/signup/api', {
             username: name,
             email: mail,
             password: pass

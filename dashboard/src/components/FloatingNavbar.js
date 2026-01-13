@@ -1,18 +1,28 @@
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import Sidebar from './Sidebar';
+import Button from '@mui/material/Button';
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+function FloatingNavbar({ children }) {
 
-function FloatingNavbar({setCheck }) {
+    const [open, setOpen] = useState(false);
     return (
-        <div className="floatingnavbar-container">
-            <div className="cross-button"><a onClick={() => setCheck(false)}><i class="fa-solid fa-xmark"></i></a></div>
-            <div> <Link  to='/dashboard'>Dashboard</Link></div>
-            <div> <Link to='/holdings'>Holdings</Link></div>
-            <div> <Link to='/positions'>Positions</Link></div>
-            <div> <Link to='/funds'>Funds</Link></div>
-            <div> <Link to='/apps'>Apps</Link></div>
-            <div> <Link to='/signup'>Signup</Link></div>
-            <div><Link to='/login'>Login</Link></div>
-        </div>
-    );
-}
 
+        <>
+            {open ? '' :
+                <Button
+                    variant="contained"
+                    onClick={() => setOpen(true)}
+                    sx={{ m: 2 }}
+                >
+                    <MenuOutlinedIcon />
+
+                </Button>
+            }
+
+            <Sidebar open={open} onClose={() => setOpen(false)} />
+
+            {children}
+        </>
+    )
+}
 export default FloatingNavbar;

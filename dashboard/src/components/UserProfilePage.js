@@ -14,7 +14,7 @@ function UserProfilePage() {
 
     async function sendLogoutRequest() {
         try {
-            await axios.post('http://localhost:3001/logout',
+            await axios.post('http://localhost:3001/user-logout/logout/api',
                 {}, {
                 withCredentials: true
             })

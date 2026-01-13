@@ -24,7 +24,7 @@ function Dashboard() {
     let [allWatchlist, setAllWatchlist] = useState([]);
     useEffect(() => {
         async function runner() {
-            await axios.get("http://localhost:3001/watchlist", {
+            await axios.get("http://localhost:3001/data/watchlist/api", {
                 withCredentials: true
             }).then((res) => {
                 setAllWatchlist(res.data);

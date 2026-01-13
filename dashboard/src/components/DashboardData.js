@@ -7,10 +7,10 @@ import CircularProgress from '@mui/material/CircularProgress';
 function DashboardDataPage() {
 
     const { allHoldings } = useStock();
-    let [user, setUser] = useState();
+    let [user, setUser] = useState(null);
     useEffect(() => {
         async function runner() {
-            await axios.get('http://localhost:3001/user',
+            await axios.get('http://localhost:3001/check-user/user/api',
                 { withCredentials: true }
 
             ).then((res) => {

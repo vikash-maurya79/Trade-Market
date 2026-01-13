@@ -9,7 +9,7 @@ function PositionsPage() {
 
     useEffect(() => {
         async function runner() {
-            await axios.get("http://localhost:3001/positions",
+            await axios.get("http://localhost:3001/data/positions/api",
                  { withCredentials: true }).then((res) => {
                 setPositions(res.data);
                 console.log(res.data);
