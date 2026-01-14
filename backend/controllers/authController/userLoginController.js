@@ -2,7 +2,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require("../../models/UserModel");
 
-
 const userLoginController = async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) {
