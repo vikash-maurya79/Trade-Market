@@ -5,5 +5,4 @@ function averageCalculator(amount, quantity, dbAvg) {
 function quantityCalculator(quantity, dbquantity) {
     return Number(quantity + dbquantity);
 }
-
 module.exports = { averageCalculator, quantityCalculator };
