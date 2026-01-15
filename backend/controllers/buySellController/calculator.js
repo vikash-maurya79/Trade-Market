@@ -1,4 +1,7 @@
 function averageCalculator(amount, quantity, dbAvg) {
+    if (amount === 0) {
+        return 0
+    }
     return Number(((amount / quantity) + dbAvg) / 2);
 }
 
